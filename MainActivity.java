@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private LinearLayout butLayout;
-    private TextView subject, text1, textView4;
+    private TextView subject, text1;
     private Game game;
     private TextView a, r, k;
     @Override
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 "1- Искать убежище.\n" +
                 "2- Искать помощи.",2, 5,15,-5);
 
+
         s.d[0].d[0].d[0]=
                 s.d[0].d[1]=
                         new Sityation( " Убежище. ", "Вы наши материалы и лодку.\n" +
@@ -51,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         s.d[0].d[0].d[1]=new Sityation(" Помощь. ", "C чего начнёте?\n " +
                 "1- Искать других выживших.\n" +
                 "2- Подавать сигналы ''SOS''", 2, -5,-5,-5);
-
-        s.d[0].d[0].d[1].d[0]=
 
         s.d[0].d[0].d[1].d[1]=new Sityation("SOS","Каким способом вы хотите подать сигнал?\n" +
                 "1- Развести костёр.\n 2- Выложить камнями надпись.",2,100,100,100);
@@ -82,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
         s.d[1]=new Sityation(" Новые знакомства. ", "Вы нашли выжившего. Теперь вас двое.\n " +
                 "Что дальше?\n" + "1- Начать выживать.\n" +
-                "2 -Искать помощи.\n", 2,-5,-5,30);
+                "2 - Подавать сигналы ''SOS''\n", 2,-5,-5,30);
+
 
         s.d[1].d[0]=new Sityation(" Выживание. ", "С чего начнёте?\n" +
                 "1- Искать еду.\n" +
@@ -133,8 +133,7 @@ public class MainActivity extends AppCompatActivity {
         s.d[1].d[0].d[1].d[1]=
                 s.d[0].d[1].d[0].d[0].d[1];//sos
 
-        s.d[1].d[1]=
-                s.d[0].d[0].d[1];//help
+        s.d[1].d[1]=s.d[0].d[0].d[1].d[1];
 
 
         Story story=new Story(s);
@@ -153,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         text1.setText(sityation.text);
         for (int i = 0; i < game.story.currentSityation.d.length; i++) {
             Button button = new Button(getBaseContext());
-            button.setText(i+1+"");
+            button.setText(i+1+"  ");
             butLayout.addView(button);
             final int x=i;
             a.setText(" "+game.character.A+" ");
@@ -168,9 +167,9 @@ public class MainActivity extends AppCompatActivity {
                     game.character.A+=sityation.dA;
                     game.character.R+=sityation.dR;
 
-                    a.setText(" "+game.character.A+";   ("+sityation.dA+")");
-                    k.setText(" "+game.character.K+";   ("+sityation.dK+")");
-                    r.setText(" "+game.character.R+";   ("+sityation.dR+")");
+                    a.setText(" "+game.character.A+"    ("+sityation.dA+")");
+                    k.setText(" "+game.character.K+"    ("+sityation.dK+")");
+                    r.setText(" "+game.character.R+"    ("+sityation.dR+")");
 
                 }
             });
